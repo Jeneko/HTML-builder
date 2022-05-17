@@ -42,9 +42,9 @@ async function buildHtml() {
         html = html.replace(component[0], componentHtml);
     }
 
-    // Сохраняем итоговый код в OUTPUT_DIR/HTML_FILE
+    // Сохраняем итоговый код в OUTPUT_DIR/index.html
     writeFile(
-        path.resolve(__dirname, OUTPUT_DIR, HTML_FILE),
+        path.resolve(__dirname, OUTPUT_DIR, 'index.html'),
         html
     );
 }
