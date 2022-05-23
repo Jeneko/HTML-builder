@@ -31,7 +31,7 @@ async function copyCss() {
     writeFile(
         path.resolve(__dirname, OUTPUT_FILE),
         cssArr.join('')
-    )
+    );
 }
 
 copyCss();

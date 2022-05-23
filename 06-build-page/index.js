@@ -18,7 +18,7 @@ async function createOutputDir(cb) {
     await mkdir(
         path.resolve(__dirname, OUTPUT_DIR), // путь создаваемой директории
         { recursive: true } // позволяет избежать ошибки, если директория уже существует
-    )
+    );
 
     cb();
 }
@@ -28,7 +28,7 @@ async function buildHtml() {
     let html = await readFile(
         path.resolve(__dirname, HTML_FILE),
         { encoding: 'utf-8' }
-    )
+    );
 
     // Ищем в нем шаблонные теги
     const usedComponents = html.matchAll(/{{(.+?)}}/g);
@@ -38,7 +38,7 @@ async function buildHtml() {
         const componentHtml = await readFile(
             path.resolve(__dirname, COMPONENTS_DIR, component[1] + '.html'),
             { encoding: 'utf-8' }
-        )
+        );
         html = html.replace(component[0], componentHtml);
     }
 
@@ -54,7 +54,7 @@ async function copyAssets(from) {
     await mkdir(
         path.resolve(__dirname, OUTPUT_DIR, from), // путь создаваемой директории
         { recursive: true } // позволяет избежать ошибки, если директория уже существует
-    )
+    );
 
     // Получаем содержимое директории
     const direntArr = await readdir(path.resolve(__dirname, from), { withFileTypes: true });
@@ -67,7 +67,7 @@ async function copyAssets(from) {
             copyFile(
                 path.resolve(__dirname, from, entry.name),
                 path.resolve(__dirname, OUTPUT_DIR, from, entry.name)
-            )
+            );
         }
     }
 }
@@ -99,5 +99,5 @@ async function bundleStyles() {
     writeFile(
         path.resolve(__dirname, OUTPUT_DIR, 'style.css'),
         cssArr.join('')
-    )
+    );
 }

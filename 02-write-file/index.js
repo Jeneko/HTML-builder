@@ -12,7 +12,7 @@ console.log(TEXT_GREETING);
 const ws = fs.createWriteStream(
     path.resolve(__dirname, FILE_NAME),
     { encoding: 'utf-8' }
-)
+);
 
 // Обработываем ввод данных
 process.stdin.on('data', d => {
